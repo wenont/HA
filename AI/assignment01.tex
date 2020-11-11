@@ -32,12 +32,43 @@
 \renewcommand{\theta}{\vartheta}
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
-\ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
-\chead{\Large Übungsblatt 01}
-\ohead{Jiaming Yao, 416649 \\
-	Xiaoting Wang, 406267 \\
+\ihead{AI WS 2020/21 \\ Tutorium 168 \\\today}
+\chead{\Large Assignment 01}
+\ohead{2, 1 \\
+	1, 2 \\
 	Wensheng Zhang, 405521}	
 \cfoot*{\pagemark} % Seitenzahlen unten
+
+% Codeblock and Code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
 
 \begin{document}
 
@@ -73,18 +104,49 @@
 
 \section*{Exercise 1.2}
 
-\begin{table}[h!]
-	\begin{tabular}{llllll}
-		& accessible & deterministic & episodic & dynamic & discrete \\
-		elevator     & Y          & N             & N        & Y       & Y        \\
-		the internet & N          & N             & N        & Y       & Y        \\
-		Mars Rover   & N          & N             & Y        & Y       & N       
-	\end{tabular}
-\end{table}
+	\begin{table}[h!]
+		\begin{tabular}{llllll}
+			& accessible & deterministic & episodic & dynamic & discrete \\
+			elevator     & Y          & N             & N        & Y       & Y        \\
+			the internet & N          & N             & N        & Y       & Y        \\
+			Mars Rover   & N          & N             & Y        & Y       & N       
+		\end{tabular}
+	\end{table}
 
 
 \section*{Exercise 1.3}
 
+\subsection*{(a)}
+
+	\begin{lstlisting}[language=java]
+		loop{
+			if(IsDirty()) Suck;
+			while(IsEmpty(left)){
+				Move left;
+				if(IsDirty()) Suck;
+			}
+		
+			if(IsEmpty(up)){
+				Move up;
+				if(IsDirty()) Suck;
+			}else{
+				endloop
+			}
+		
+			while(IsEmpty(right)){
+				Move right;
+				if(IsDirty()) Suck;
+			}
+		
+			if(IsEmpty(up)){
+				Move up;
+				if(IsDirty()) Suck;
+			}else{
+				endloop
+			}
+		}
+
+	\end{lstlisting}
 
 	
 	
