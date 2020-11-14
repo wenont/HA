@@ -131,10 +131,13 @@
 		$$
 		
 	\subsection*{b)}
-	
-			
-		$L_{P3}=\{ i_1,i_2,\dots ,i_n\in \mathbb N\ |\ \sum\limits_{j=1}^p i_{e_j} = \sum\limits_{k=1}^q i_{f_k} = \sum\limits_{l=1}^r i_{g_l};\ e_j,\ f_k,\ g_l\in \{ 1,\dots ,n\} ;\ e_1\ne e_2\ne\dots \ne e_p\ne f_1\ne f_2\ne \dots \ne f_q \ne g_1 \ne g_2 \ne \dots \ne g_r\ und \ |e|+|f|+|g|=n\}$
+		\textbf{Neu:}\\
+		$L_{P3} = \{ bin(a_1)\#\dots \#bin(a_m)\#bin(b_1)\#\dots \#bin(b_n)\#bin(c_1)\#\dots \#bin(c_l)\ |\ \sum\limits_{i=1}^m a_i = \sum\limits_{j=1}^n b_j = \sum\limits_{k=1}^l c_k\wedge a_1,\dots,a_m,\ b_1,\dots,b_n,\ c_1,\dots,c_l \in \mathbb{N} \}$\\
 		
+%		
+%		\textbf{Original:}\\	
+%		$L_{P3}=\{ i_1,i_2,\dots ,i_n\in \mathbb N\ |\ \sum\limits_{j=1}^p i_{e_j} = \sum\limits_{k=1}^q i_{f_k} = \sum\limits_{l=1}^r i_{g_l};\ e_j,\ f_k,\ g_l\in \{ 1,\dots ,n\} ;\ e_1\ne e_2\ne\dots \ne e_p\ne f_1\ne f_2\ne \dots \ne f_q \ne g_1 \ne g_2 \ne \dots \ne g_r\ und \ |e|+|f|+|g|=n\}$
+%		
 	\section*{Aufgabe 5}
 	\subsection*{Beschreibung}
 
@@ -174,12 +177,12 @@
 
 	\subsection*{Funktionen}
 		Mit dem leeren Wort schreibt TM ein 0, dann terminiert.\\
-		Wenn die Länge des Wortes = 1 ist, wird 0 ,,accept", aber 1 nicht.\\ 
+		Wenn die Länge des Wortes = 1 ist, wird 0 und 1 beide "reject".\\ 
 		Ist die Länge $\ge 2$ ist, kann die TM testen, ob die erste und letzte Alphabete äquivalent sind. Z.B. 0001 wird akzeptiert, 0100 nicht.
 		
 	\section*{Aufgabe 6}
 	
-		\begin{table}[h]
+		\begin{table}[h!]
 			\begin{tabular}{lllll}
 				& 0                         & 1         & B         &  \\
 				\hline
