@@ -118,6 +118,36 @@
 \cfoot*{\pagemark} % Seitenzahlen unten
 
 \begin{document}
+
+\section*{Aufgabe 5}
+
+Schreibe das gleiche Wirt w auf 1-Band und 2-Band. Der Kopf steht "uber dem letzten Zeichen von 1-und 2-Band. \\ \ \\
+Erster Schritt:\\
+Bewege den Kopf von 1-Band nach Links. Pr"ufe dabei, ob die L"ange vom Wort gerade ist. Inzwischen macht 2-Band nicht.
+
+
+\begin{table}[h!]
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		& 0         & 1         & B         \\ \hline
+		$q_0$ & $q_1,0,L$ & $q_1,1,L$ & $q_2,B,R$ \\ \hline
+		$q_1$ & $q_0,0,L$ & $q_0,1,L$ & Reject    \\ \hline
+	\end{tabular}
+\end{table}
+
+
+Zweiter Schritt:\\
+Bewege den Kopf von 1-Band nach recht und den Kopf von 2-Band nach links. Ist gelesene Zeichen von beiden B"andern gleich, schreibe ein Blank dann gehe weiter, ansonsten reject.
+
+
+\begin{table}[h!]
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		& 00/11      & 01/10  & BB     \\ \hline
+		$q_2$ & $q_2,BB,RL$ & Reject & Accept \\ \hline
+	\end{tabular}
+\end{table}
+
 	
 \section*{Aufgabe 7}
 

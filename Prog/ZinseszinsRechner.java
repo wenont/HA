@@ -47,8 +47,11 @@ public class ZinseszinsRechner {
             }
 
             SimpleIO.output("Es dauert " + dauer +" Jahre bei einem Zinssatz von " + zinssatz + "%, um von " + startbetrag + " auf den Betrag " + zielbetrag + " zu sparen.");
-
+            
+        }else{
+            SimpleIO.output("Bitte geben Sie eine korrekte Antwort!", "Fehler");
         }
+
 
     }
 
