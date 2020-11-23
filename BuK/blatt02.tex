@@ -312,12 +312,36 @@ GOTO while
 	D.h. wenn wir die acht Zeichen aus $R$ in kanonischer Reihenfolge sezten, bekommen wir eine abz"ahlbare und unendliche Menge, von der $R$ eine Teilmenge ist.\\
 	Somit ist $R$ abz"ahlbar.
 	
+	
+\subsection*{b)}
 
+		Wir definieren eine 2-dimensionale unendliche Matrix $(M_{i,j})_{i\in \mathbb{N},j\in \mathbb{N}}$ mit
+		
+		
+		$$ M_{i,j}=\left\{
+		\begin{aligned}
+			1 &  & falls\ w_j \in L(r_i)\\
+			0 &  & sonst\\
+		\end{aligned}
+		\right.
+		$$
+	
+	Es gibt ein $k\in \mathbb N$, sodass $A = L(r_k)$.
 
+	\begin{itemize}
+		\item Fall 1
+		$$
+		M_{k,k} = 1 \overset{Def\ A}{\Longrightarrow} a^k \notin A \Longrightarrow a^k \notin L(r_k)	 \overset{Def\ M}{\Longrightarrow} M_{k,k} = 0
+		$$
+		
+		\item Fall 2
+		$$
+		M_{k,k} = 0 \overset{Def\ A}{\Longrightarrow} a^k \in A \Longrightarrow a^k \in L(r_k) \overset{Def\ M}{\Longrightarrow} M_{k,k} = 1
+		$$		
+	\end{itemize}
 
-
-
-
+	Folglich gibt es kein solch k f"ur $A = L(r_k)$.\\
+	Somit ist A nicht regul"ar.
 
 
 
