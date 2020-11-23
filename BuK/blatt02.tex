@@ -172,6 +172,39 @@ Platz: $s(w)=\Theta (|w|)$
 
 \section*{Aufgabe 6}
 
+	\begin{lstlisting}[language=java, mathescape=true]
+
+		// section 1
+		b = 1;
+		n = 1;
+		while ( m <= c ){
+			b = b * 2;
+			n += 1;
+		}
+		return n;  
+
+		
+		// section 2
+		b = 1;
+		i = n;
+		while ( i == 0 ){
+			b = b * 2;
+			i = i - 1;
+		}
+		return b; // b is $2^n$.
+		
+		//section 3
+		c = 1;
+		d = c * c;
+		while ( d < b ){
+			c = c + 1;
+			d = c * c;
+		}
+		return c; // c = $\sqrt{2^n}$.
+	\end{lstlisting}
+
+
+
 \begin{lstlisting}[language=java, mathescape=true]
 // section 1: get n
 
