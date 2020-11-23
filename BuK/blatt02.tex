@@ -95,18 +95,36 @@
 %		\int x^2 ~\text{d}x = \frac13 x^3 + c.
 %	\end{tcolorbox}
 
-\usepackage[ampersand]{easylist}
-\ListProperties(Hide=100, Hang=true, Progressive=3ex, Style*=-- ,Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ ) %easylist
-% ...
-% 	example:
-%	\begin{easylist}
-%		& Blah
-%		& Blah
-%		&& Blah
-%		&&& Blah
-%		&&&& Blah
-%		&&&&& Blah
-%	\end{easylist}
+% Codeblock and Code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	%	backgroundcolor=\color{backcolour},   
+	backgroundcolor=\color{white},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 % https://upload.wikimedia.org/wikipedia/commons/2/2d/LaTeX.pdf#page=131
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
@@ -151,65 +169,148 @@ Bewege den Kopf von 1-Band nach recht und den Kopf von 2-Band nach links. Ist ge
 Zeitbedarf: $t(w)=\Theta (|w|)$\\
 Platz: $s(w)=\Theta (|w|)$
 
-	
+
+\section*{Aufgabe 6}
+
+\begin{lstlisting}[language=java, mathescape=true]
+// section 1: get n
+
+CLOAD 2
+STORE 2
+
+CLOAD 1
+STORE 3
+
+# while
+LOAD 1
+SUB 2
+
+IF c(O) >= 0 GOTO end
+
+LOAD 2
+CMULT 2
+STORE 2
+
+LOAD 3
+CADD 1
+STORE 3
+
+GOTO while
+# end
+// Now the register 3 is n. Uniformen Kostenmass is 9n+4.
+
+
+// section 2: get $2^n$
+
+CLOAD 1
+STORE 2
+
+# while
+LOAD 3
+IF c(0)=0 GOTO end
+
+LOAD 2
+CMULT 2
+STORE 2
+
+LOAD 3
+CSUB 1
+STORE 3
+
+GOTO while
+# end
+// Now the register 2 is $2^n$. Uniformen Kostenmass is 8n+2.
+
+
+// section 3: get $\sqrt{2^n}$
+
+CLOAD 1
+STORE 3
+
+LOAD 3
+MULT 3
+STORE 4
+
+# while
+LOAD 4
+SUB 2
+IF c(0)>0 GOTO end
+
+LOAD 3
+CADD 1
+STORE 3
+
+LOAD 3
+MULT 3
+STORE 4
+GOTO while
+# end
+// Now the register 3 is $2^n$. Uniformen Kostenmass is $\sqrt{2^n}+9n+5$.
+\end{lstlisting}
+
+
 \section*{Aufgabe 7}
 
 \subsection*{a)}
 
-	Wir nehmen eine Aussage an, dass R abz"ahlbar ist.\\ 
-
+%	Wir nehmen eine Aussage an, dass R abz"ahlbar ist.\\ 
+%
+%	Aus der Vorlesung haben wir gelernt, dass $\sum ^{*}$, die Menge der W"orter "uber einem endlichen Alphabet $\sum$, abz"ahlbar ist.\\
+%	
+%	D.h. die Menge von aller W"orter, die aus $\{ a,\ b,\ c\}$ besteht, ist auch abz"ahlbar.\\
+%	
+%	% $\{ a,\ b,\ c\ ,{}^{*}\ +,\ (,\ ), \emptyset \}$
+%	
+%	Sei W die Menge von allen W"orter von R und $w_1,\ w_2,\ w_3,\ w_4,\dots$ eine Aufz"ahlung von W.\\
+%	
+%	Wir definieren eine 2-dimensionale unendliche Matrix $(A_{i,j})_{i\in \mathbb{N},j\in \mathbb{N}}$ mit
+%	
+%	
+%	$$ A_{i,j}=\left\{
+%	\begin{aligned}
+%		1 &  & falls\ w_j \in L(r_i)\\
+%		0 &  & sonst\\
+%	\end{aligned}
+%	\right.
+%	$$
+%	
+%	Wir definieren die Menge
+%	$$
+%	W_{diag} = \{ w_i\ |\ i\in \mathbb{N},\ A_{i,i} = 1 \} 
+%	$$
+%	
+%	$\Longrightarrow$ das Komplement von $W_{diag}$:
+%	
+%	$$
+%	\bar{W}_{diag} = W\backslash W_{diag} = \{ w_i\ |\ i\in \mathbb{N},\ A_{i,i} = 0 \} 
+%	$$
+%	
+%	$\Longrightarrow$ $\bar{W}_{diag} \in W$\\
+%	
+%	Sei $w_{l_1},\ w_{l_2},\ w_{l_3},\dots$ eine Abz"ahlung von $\bar{W}_{diag}$ mit einem regul"aren Ausdruck $r_k = (r_{m_1} + r_{m_2} + r_{m_3} + \dots )$ f"ur $k\in \mathbb{N}$, $w_{L_1}\in L(r_{m_1})$, $w_{l_2} \in L(r_{m_2})$, usw., denn R und W beide sind abz"ahlbar.\\ 
+%	
+%	Somit $\bar{W}_{diag} =\{ w_{l_1},\ w_{l_2},\ w_{l_3},\dots \} = L(r_{m_1}) \cup L(r_{m_2}) \cup L(r_{m_3}) \cup \dots = (r_{m_1} + r_{m_2} + r_{m_3} + \dots ) = L(r_k)$. Dazu gibt es auch ein entsprechendes Wort $w_k$.\\
+%	
+%	Jetzt betrachten wir zwei F"alle:
+%	
+%	\begin{itemize}
+%		\item Fall 1
+%		$$
+%		A_{k,k} = 0 \overset{Def\ \bar{W}_{diag}}{\Longrightarrow} w_k \notin \bar{W}_{diag} \Longrightarrow w_k \notin L(r_k)	 \overset{Def\ A}{\Longrightarrow} A_{k,k} = 1
+%		$$
+%		
+%		\item Fall 2
+%		$$
+%		A_{k,k} = 1 \overset{Def\ \bar{W}_{diag}}{\Longrightarrow} w_k \in \bar{W}_{diag} \Longrightarrow w_k \in L(r_k) \overset{Def\ A}{\Longrightarrow} A_{k,k} = 0
+%		$$		
+%	\end{itemize}
+%	
+%	Beide F"alle zeigen den Widerspruch. Somit ist R "uberz"ahlbar.\\
+%	\\ \ \\
+	$R$ steht nur aus acht Zeichen. \\
 	Aus der Vorlesung haben wir gelernt, dass $\sum ^{*}$, die Menge der W"orter "uber einem endlichen Alphabet $\sum$, abz"ahlbar ist.\\
-	
-	D.h. die Menge von aller W"orter, die aus $\{ a,\ b,\ c\}$ besteht, ist auch abz"ahlbar.\\
-	
-	% $\{ a,\ b,\ c\ ,{}^{*}\ +,\ (,\ ), \emptyset \}$
-	
-	Sei W die Menge von allen W"orter von R und $w_1,\ w_2,\ w_3,\ w_4,\dots$ eine Aufz"ahlung von W.\\
-	
-	Wir definieren eine 2-dimensionale unendliche Matrix $(A_{i,j})_{i\in \mathbb{N},j\in \mathbb{N}}$ mit
-	
-	
-	$$ A_{i,j}=\left\{
-	\begin{aligned}
-		1 &  & falls\ w_j \in L(r_i)\\
-		0 &  & sonst\\
-	\end{aligned}
-	\right.
-	$$
-	
-	Wir definieren die Menge
-	$$
-	W_{diag} = \{ w_i\ |\ i\in \mathbb{N},\ A_{i,i} = 1 \} 
-	$$
-	
-	$\Longrightarrow$ das Komplement von $W_{diag}$:
-	
-	$$
-	\bar{W}_{diag} = W\backslash W_{diag} = \{ w_i\ |\ i\in \mathbb{N},\ A_{i,i} = 0 \} 
-	$$
-	
-	$\Longrightarrow$ $\bar{W}_{diag} \in W$\\
-	
-	Sei $w_{l_1},\ w_{l_2},\ w_{l_3},\dots$ eine Abz"ahlung von $\bar{W}_{diag}$ mit einem regul"aren Ausdruck $r_k = (r_{m_1} + r_{m_2} + r_{m_3} + \dots )$ f"ur $k\in \mathbb{N}$, $w_{L_1}\in L(r_{m_1})$, $w_{l_2} \in L(r_{m_2})$, usw., denn R und W beide sind abz"ahlbar.\\ 
-	
-	Somit $\bar{W}_{diag} =\{ w_{l_1},\ w_{l_2},\ w_{l_3},\dots \} = L(r_{m_1}) \cup L(r_{m_2}) \cup L(r_{m_3}) \cup \dots = (r_{m_1} + r_{m_2} + r_{m_3} + \dots ) = L(r_k)$. Dazu gibt es auch ein entsprechendes Wort $w_k$.\\
-	
-	Jetzt betrachten wir zwei F"alle:
-	
-	\begin{itemize}
-		\item Fall 1
-		$$
-		A_{k,k} = 0 \overset{Def\ \bar{W}_{diag}}{\Longrightarrow} w_k \notin \bar{W}_{diag} \Longrightarrow w_k \notin L(r_k)	 \overset{Def\ A}{\Longrightarrow} A_{k,k} = 1
-		$$
-		
-		\item Fall 2
-		$$
-		A_{k,k} = 1 \overset{Def\ \bar{W}_{diag}}{\Longrightarrow} w_k \in \bar{W}_{diag} \Longrightarrow w_k \in L(r_k) \overset{Def\ A}{\Longrightarrow} A_{k,k} = 0
-		$$		
-	\end{itemize}
-	
-	Beide F"alle zeigen den Widerspruch. Somit ist R "uberz"ahlbar.
-	
+	D.h. wenn wir die acht Zeichen aus $R$ in kanonischer Reihenfolge sezten, bekommen wir eine abz"ahlbare und unendliche Menge, von der $R$ eine Teilmenge ist.\\
+	Somit ist $R$ abz"ahlbar.
 	
 
 
