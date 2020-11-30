@@ -153,19 +153,36 @@ Dann gibt es folgende F"alle:
 
 
 \subsection*{b)}
+$L_b$= \{ $\langle M \rangle$ $w$  $|$ M schreibt bei Eingabe $w$ jemals ein \# .\} \\
 
-\textit{L} = \{$\langle M \rangle w$ $|$ \textit{M} schreibt bei Eingabe \textit{w} mindestens einmal ein \# aufs Band\}\\
+\subsection*{c)}
+$L_c$=\{ $\langle M \rangle$ $w$  $|$ wenn M bei leeren Eingabewort gestart wird, schreibt M jemals einen a.\} \\
 
-Eingabe: \textit{w}, TM \textit{M}, $|Q|\cdot |\Gamma | \cdot max\{ |w|,1 \}$\\
 
-"Ahnlich wie der Beweis von a) , pr"ufe, ob ein \# in der erreichten Konfiguration geschrieben wird.
+
 
 \subsection*{c)}
 
-\textit{L} = \{$\langle M \rangle$ $|$ \textit{M} schreibt bei dem leeren Eingabe mindestens einmal ein $a\in \Gamma \ mit\ a\notin B$ aufs Band\}\\
+
+\section*{Aufgabe 5}
+\subsection*{a)} 
+$S$=\{ $f_M$  $|$ $\forall w \in \{0,1\}^*$ : $f_{M}(w)=\perp$ \} \\
+Dann ist:\\
+L($S$)=\{ $\langle M \rangle$ $|$ berechnet eine Funktion aus S. \} \\
+ \indent      \ \ \  =\{ $\langle M \rangle$ $|$ M h{\"a}lt auf keinen W{\"o}rter.\}\\
+$S\ne \emptyset$: $f_{M_\perp} \in S$, $M_\perp$ geht immer in Endlosschleife.\\
+$S \ne R$: $f_{M_w} \in R \backslash S$, $M_w$ h{\"a}lt auf $w$ und ist endscheidbar.\\
+Nach \textit{Satz von Rice} ist $L_1$ nicht rekursiv.
 
 
-
+\subsection*{b)}
+$S$=\{ $f_M$  $|$ $\forall \ w,w^{'} \in \{0,1\}^*$ : $ f_{M_c}(w)=w^{'}$, $| w^{'} |<c$ \} \\
+Dann ist:\\
+L($S$)=\{ $\langle M \rangle$ $|$ $M$ berechnet eine Funktion aus S. \} \\
+\indent \ \ \ =\{ $\langle M \rangle$ $|$ die L{\"a}nge aller ausgegebenen W{\"o}rter von M ist beschr{\"a}nkt bei c\} \\
+$S \ne \emptyset$: $f_{M_w} \in S$, $M_w$ h{\"a}lt immer auf jeder Eingabe und die Ausgabe ist leer.\\
+$S \ne R$: $f_{M_w} \in R \backslash S$, $M_w$ h{\"a}lt auf $w$ mit $|f_w| \geq c$ .\\
+Nach \textit{Satz von Rice} ist $L_2$ nicht rekursiv.
 
 
 
@@ -236,4 +253,3 @@ Eingabe: \textit{w}, TM \textit{M}, $|Q|\cdot |\Gamma | \cdot max\{ |w|,1 \}$\\
 %	% und an der entsprechenden Stelle dann die Grafik laden: \includegraphics{datei}
 %	
 \end{document}
-
