@@ -84,9 +84,24 @@ public class Karte {
     }
 
     public boolean bedient(Karte other){
-        if()
+        if(this.farbe == other.farbe || this.wert == other.wert || this.wert == Wert.BUBE){
+            return true;
+        }       
+        return false;
+    }
 
-        return true;
+    public boolean bedienbar(Karte... karten){
+        for (Karte karte1 : karten){
+            for (Karte karte2 : karten){
+                if(karte1 != karte2){
+                    boolean i = karte1.bedient(karte2);
+                    if(i){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 
