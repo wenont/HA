@@ -35,10 +35,10 @@ public class Karte {
                 f1 = Farbe.KARO;
             }
         }
-        //  SEIBEN, ACHT, NEUN, ZEHN, BUBE, DAME, KOENIG, ASS;
+        //  SIEBEN, ACHT, NEUN, ZEHN, BUBE, DAME, KOENIG, ASS;
         switch(w){
             case "SEIBEN" -> {
-                w1 = Wert.SEIBEN;
+                w1 = Wert.SIEBEN;
             }
             case "ACHT" -> {
                 w1 = Wert.ACHT;
