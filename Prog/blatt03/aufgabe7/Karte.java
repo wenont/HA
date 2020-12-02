@@ -20,6 +20,7 @@ public class Karte {
         Wert w1;
 
         // KREUZ, PIK, HERZ, KARO;
+
         switch(f){
             case "KREUZ" -> {
                 f1 = Farbe.KREUZ;
@@ -30,7 +31,7 @@ public class Karte {
             case "HERZ" -> {
                 f1 = Farbe.HERZ;
             }
-            case "KARO" -> {
+            default -> {
                 f1 = Farbe.KARO;
             }
         }
@@ -57,11 +58,12 @@ public class Karte {
             case "KOENIG" -> {
                 w1 = Wert.KOENIG;
             }
-            case "ASS" -> {
+            default -> {
                 w1 = Wert.ASS;
             }
         }
-        return neueKarte(f1, w1);
+
+        return Karte.neueKarte(f1, w1);
     }
 
     public static int kombinationen(){     
@@ -91,10 +93,10 @@ public class Karte {
     }
 
     public boolean bedienbar(Karte... karten){
-        for (Karte karte1 : karten){
-            for (Karte karte2 : karten){
-                if(karte1 != karte2){
-                    boolean i = karte1.bedient(karte2);
+        for (Karte k1 : karten){
+            for (Karte k2 : karten){
+                if(k1 != k2){
+                    boolean i = k1.bedient(k2);
                     if(i){
                         return true;
                     }
@@ -104,7 +106,14 @@ public class Karte {
         return false;
     }
 
-
-
-
+    public void druckeEinbahnBedienungen(){
+        Karte [] karte = Karte.skatblatt();
+        for (Karte k1 : karte){
+            for (Karte k2 : karte){
+                if(k1 != k2 && k1.bedient(k2)){
+                        System.out.println(k1.toString() + " bedient " + k2.toString() + ", aber " + k2.toString() + " nicht " + k1.toString()); 
+                }
+            }
+        }
+    }
 }
