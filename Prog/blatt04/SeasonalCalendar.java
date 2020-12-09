@@ -3,7 +3,7 @@ public class SeasonalCalendar {
     /**
      * alle Produkte, über die der Saisonkalender Informationen enthalten soll
      */
-    Product[] products;
+    private Product[] products;
 
     /**
      * Initialisiere eine neue SeasonalCalendar-Klasse mit entsprechenden Attributen

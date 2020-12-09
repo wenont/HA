@@ -2,7 +2,6 @@
  * Schreibe eine Kalendar
  */
 public class Launcher {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
   Product a=new Product("Apfel",BooleanStringHelper.parse("111111001111",'1'),BooleanStringHelper.parse("111111111111",'1' ));
@@ -14,9 +13,7 @@ public class Launcher {
   Product[] products= {a,b,c,d,e,f}; 
 
   SeasonalCalendar outputCalendar =new SeasonalCalendar(products);
-	
 	System.out.print(outputCalendar.stringify());
 	
 	}
-
 }
