@@ -56,6 +56,10 @@
 % Aufzählungen anpassen (alternativ: \arabic, \alph)
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
+
+\usepackage{color}
+\usepackage{pifont}
+
 % rwth colors
 % colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
 \definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
@@ -133,10 +137,46 @@
 \cfoot*{\pagemark} % Seitenzahlen unten
 
 \begin{document}
-\section*{Aufgabe 5}
-Sei w die Eingabe f"ur $H_\epsilon$.
+	
+\section*{Aufgabe 4}
+Zu zeigen: $A$ ist entscheidbar \\
+$A \le B$ und $B$ rekursiv aufz{\"a}hlbar $\Longrightarrow$ $A$ ist auch rekursiv aufz{\"a}hlbar (Lemma von Reduktionen) \textcolor{blue}{- - - - \ding{172}}\\
+$A \le B$ und $B \le \overline{A}$ $\Longrightarrow$ $A \le \overline{A}$ (nach Tutoraufgabe 2a von 4.Tutuorium, also Transitivit{\"a}t von Reduktionen) \\
+$A \le \overline{A}$ $\Longrightarrow$ $\overline{A} \le A$ (nach Tutoraufgabe 2b von 4.Tutuorium) \textcolor{blue}{- - - - \ding{173}}\\
+\textcolor{blue}{\ding{172}} und \textcolor{blue}{ \ding{173}} $\Longrightarrow$ $ \overline{A}$ ist auch rekursiv aufz{\"a}hlbar  \textcolor{blue}{- - - -  \ding{174}}\\
+\textcolor{blue}{\ding{172}} und \textcolor{blue}{\ding{174}} $\Longrightarrow$ $A$ ist entscheidbar 
 
-Falls w kein 
+
+ 
+\section*{Aufgabe 5}
+\noindent Zu zeigen: $\textbf{H}_{\varepsilon}$ $\le$ $\textbf{L}_{111}$ \\
+\noindent Sei $\omega$ die Eingabe f{\"u}r $\textbf{H}_{\varepsilon}$
+\begin{itemize}
+	\item Wenn $\omega$ keine g{\"u}ltige G{\"o}delnummer ist, so sei $f(\omega)=\omega$
+	\item Falls $\omega=\langle M \rangle$ f"ur eine \textbf{TM} M, so sei $f(\omega)$ die G"odelnummer einer \text{TM} $M^{*}$ mit der folgenden Eigenschaften:\\
+	$M^{*}$ "uberpr"uft, ob die Eingabe mit $111$ endet.\\
+	\underline{Falls ja}, l"oscht $M^{*}$ die Eingabe und simuliert $M$ mit der Eingabe $\varepsilon$. Ansonsten geht $M^*$ in eine Endlosschleife.
+\end{itemize} 
+
+\noindent Korrektheit:
+\begin{itemize}
+	\item Falls $\omega$ keine G"odelnummer ist, ist die Korrektheit klar
+	\item Sei nun $\omega=\langle M \rangle$ f"ur eine \textbf{TM} und sei $f(\omega)=\langle M^{*} \rangle$\\
+	Es gilt: $\omega \in \textbf{H}_{\varepsilon}$\\
+	$\Longrightarrow$ M h"alt auf der Eingabe $\varepsilon$\\
+	$\Longrightarrow$ $M^*$ h"alt auf der Eingabe, die mit $111$ endet.\\
+	$\Longrightarrow$ $\langle M^* \rangle \in \textbf{L}_{111}$\\
+	$\Longrightarrow$ $f(\omega) \in \textbf{L}_{111}$\\
+	
+	
+	$\omega \notin \textbf{H}_{\varepsilon}$ \\
+	$\Longrightarrow$ M h"alt nicht auf der Eingabe $\varepsilon$\\    
+	$\Longrightarrow$ $M^*$ h"alt nicht auf der Eingabe, die mit $111$ enden\\
+	$\Longrightarrow$ $\langle M^* \rangle \notin \textbf{L}_{111}$\\
+	$\Longrightarrow$ $f(\omega) \notin \textbf{L}_{111}$\\
+	
+\end{itemize}
+
 
 \section*{Aufgabe 6}
 
@@ -183,16 +223,16 @@ $S =\{ f_M\ |\ f_M(\mathbb{P}) = 1,\ f_M(\Sigma^*\backslash \mathbb{P})=0\}$
 
 	\end{itemize}
 
-	Korrektheit:\\
+	Korrektheit:
 	\begin{align*}
-		w\in H_\epsilon &\longrightarrow M\ h"alt\ auf\ \epsilon \\
-		&\longrightarrow M^*_1\ akzeptiert\ die\ Einegabe.\ M^*_2\ akzeptiert\ dieselbe\ Eingabe\ nicht.\\
-		&\longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \in L_{comp}\\
-		&\longrightarrow f(w) \in L_{comp}\\		
-		w\notin H_\epsilon &\longrightarrow M\ h"alt\ nicht\ auf\ \epsilon \\
-		&\longrightarrow  M^*_1\ akzeptiert\ alle\ Einegabe nicht.\ M^*_2\ akzeptiert\ alle\ Eingabe\ nicht.\\
-		&\longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \notin L_{comp}\\
-		&\longrightarrow f(w) \notin L_{comp}\\		
+		w\in H_\epsilon &\Longrightarrow M\ h"alt\ auf\ \epsilon \\
+		&\Longrightarrow M^*_1\ akzeptiert\ die\ Einegabe.\ M^*_2\ akzeptiert\ dieselbe\ Eingabe\ nicht.\\
+		&\Longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \in L_{comp}\\
+		&\Longrightarrow f(w) \in L_{comp}\\		
+		w\notin H_\epsilon &\Longrightarrow M\ h"alt\ nicht\ auf\ \epsilon \\
+		&\Longrightarrow  M^*_1\ akzeptiert\ alle\ Einegabe nicht.\ M^*_2\ akzeptiert\ alle\ Eingabe\ nicht.\\
+		&\Longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \notin L_{comp}\\
+		&\Longrightarrow f(w) \notin L_{comp}\\		
 	\end{align*}
 
 	Daher wird $H_\epsilon \leq L_{comp}$ zeigt. Da $H_\epsilon$ nicht rekursiv ist, ist $L_{comp}$ nicht rekursiv.
@@ -201,14 +241,45 @@ $S =\{ f_M\ |\ f_M(\mathbb{P}) = 1,\ f_M(\Sigma^*\backslash \mathbb{P})=0\}$
 \section*{Aufgabe 7}
 \subsection*{a)}
 	Zu zeigen:\\
-	$L$ ist rekursiv aufz{\"a}hlbar $\iff$ $L=$ Def($f$)=\{$x$ $|$ $f(x) \ne \bot$ \} \\
-	``$\Rightarrow$":  Sei A ein Aufz{\"a}hler f{\"u}r $L$. Wir konstruieren eine TM $M$, die $L$ erkennt.\\
-	\indent \indent \  \textcolor{blue} {Bei Eingabe $w$ arbeitet $M$ wir folgt:}\\
-	\indent \indent \  $M$ simuliert $A$ mit Hilfe einer Spur, welche die Rolle des Druckers {\"u}bernimmt.\\
-	\indent \indent \  Immer wenn ein neues Wort gedruckt worden ist, vergleicht $M$ dieses Wort mit $w$ \\
-	\indent \indent \  und h{\"a}lt bei {\"U}bereinstimmung auf.\\
-	\indent \indent \  Daher berechnet TM $M$ die Funktion $f_M$ mit der Form: $\forall$ $x$ $\in$ $L$, $f_M(x) \ne \bot$\\	
-	``$\Leftarrow$": Sei $L=$ Def($f$)=\{ $x$ $|$ $f(x) \ne \bot$ \}, dann konstruieren wir einen Aufz"ahler $A^{'}$ f"ur $L$.\\
+	$L$ ist rekursiv aufz{\"a}hlbar $\iff$ $L=$ Def($f$)=\{$x$ $|$ $f(x) \ne \bot$ \}
+	\begin{itemize}		
+		\item[$``\Rightarrow "$] Sei A ein Aufz{\"a}hler f{\"u}r $L$. Wir konstruieren eine TM $M$, die $L$ erkennt.\\
+		\textcolor{blue} {Bei Eingabe $w$ arbeitet $M$ wir folgt:}\\
+		$M$ simuliert $A$ mit Hilfe einer Spur, welche die Rolle des Druckers {\"u}bernimmt.\\
+		Immer wenn ein neues Wort gedruckt worden ist, vergleicht $M$ dieses Wort mit $w$ und h{\"a}lt bei {\"U}bereinstimmung auf.\\
+		Daher berechnet TM $M$ die Funktion $f_M$ mit der Form: $\forall$ $x$ $\in$ $L$, $f_M(x) \ne \bot$
+		
+		\item[$``\Leftarrow "$] 
+		Sei $f$ eine berechenbare Funktion f"ur $S=\{f\ |\ \forall x\in L,\ f(x)\ne \bot\}$\\
+		F"ur die Funktion f existiert eine TM M', die f berechnet.\\
+		Dann konstruieren wir ein Aufz"ahler $A'$ durch $M'$:\\
+		\textcolor{blue}{F"ur $i = 1, 2, 3\cdots$ }\\
+		$A'$ simuliere je i Schritte von $M'$ auf jedem Wort aus $\{w_1,\ w_2,\cdots ,w_i\}$.\\
+		Wann $M'$ immer dabei auf eines der W"orter h"alt, so drucke es aus.\\
+		Somit ist $A'$ ein Aufz"ahler von L.
+	\end{itemize}
+
+\subsection*{b)}
+
+	Zu zeigen:\\
+	$L$ ist rekursiv aufz{\"a}hlbar $\iff$ $L=$ Bild($f$)=\{$f(x)$ $|$ $x\in \{0,1\}^*$ \} oder $L$=\{\}\\	
+	\begin{itemize}		
+		\item[$``\Rightarrow "$] 
+		Sei $L$ rekursiv aufz"ahlbar. Damit gibt es F"ur $L$ ein Aufz"ahler A.\\
+		F"ur $\{0,1\}^*$ steht eine kanonische Reihenfolge. Sei $x\in \{0,1\}^*$ in i-Position
+		
+		Konstruiere ein TM M mit folgenden Eigenschaft: 
+		\begin{itemize}
+			\item [1.] Suche, welche Stelle die Eingabe in der kanonischen Reihenfolge steht, z.B. i-te Stelle.
+			\item [2.] Simuliere A und druck das i-te Wort von L aus. Falls A h"alt(D.h. A hat alle W"orter von L ausgegeben), dann simuliere A nochmal, aber z"ahle weiter. (Z.B. Das letzte Wort aus A ist n-te Wort. Wenn wir nochmal A simulieren, z"ahlen wir von n+1.)
+			\item [3.] Wiederhole 2-te Schritte, bis das i-te Wort von $L$ ausgibt.
+		\end{itemize}
+	Im Fall kann $M$ f"ur jeder $x\in \{0,1\}^*$ ein Wort von L finden und dann es ausgeben. F"ur so eine TM $M$ existiert ein Funktion, die total berechenbar ist.
+		
+		
+
+	\end{itemize}
+
 	 
 \end{document}
 
