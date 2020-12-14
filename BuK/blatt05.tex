@@ -1,0 +1,214 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+
+
+
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+% 请把新添加的宏包放置此处
+\usepackage{blindtext} 
+\usepackage{enumitem}
+%\usepackage {ctex} % 中文字体支持
+\usepackage[most]{tcolorbox} 
+% https://tex.stackexchange.com/questions/180325/boxed-equation-with-number/180326
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/mathtools/empheq.pdf#page=23
+
+\tcbset{colback=rwth-blue!10!white, colframe=-rwth-red!50!black, 
+	highlight math style= {enhanced, %<-- needed for the ’remember’ options
+		colframe=red,colback=red!10!white,boxsep=0pt}
+} 
+%   for tcolorbox
+% 	Example
+%	\begin{tcolorbox}[ams gather*]
+%		\sum\limits_{n=1}^{\infty} \frac{1}{n} = \infty.\\
+%		\int x^2 ~\text{d}x = \frac13 x^3 + c.
+%	\end{tcolorbox}
+
+% Codeblock and Code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	%	backgroundcolor=\color{backcolour},   
+	backgroundcolor=\color{white},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+% https://upload.wikimedia.org/wikipedia/commons/2/2d/LaTeX.pdf#page=131
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
+\chead{\Large Übungsblatt 05}
+\ohead{Jiaming Yao, 416649 \\
+	   Xiaoting Wang, 406267 \\
+	   Wensheng Zhang, 405521}	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+\section*{Aufgabe 5}
+Sei w die Eingabe f"ur $H_\epsilon$.
+
+Falls w kein 
+
+\section*{Aufgabe 6}
+
+\subsection*{a)}
+
+$L_{\mathbb{P}}$ ist unentscheidbar.\\
+Wir beweisen es durch \textit{Satz von Rice}.\\
+$S =\{ f_M\ |\ f_M(\mathbb{P}) = 1,\ f_M(\Sigma^*\backslash \mathbb{P})=0\}$
+\begin{align*}
+	L_{\mathbb{P}} &= L(S)\\
+	&= \{\langle M\rangle \ |\ M\ berechnet\ eine\ Funktion\ aus\ S\}\\
+	&= \{\langle M\rangle \ |\ M\  entscheidet\ die\ Menge\ der\ Bin"ardarstellugungen\ der\ Primzahlen. \}
+\end{align*}
+\begin{itemize}
+	\item 
+	$S \ne \emptyset :$\\
+	Es existiert eine TM $M_{10}$ mit:\\
+	$M_{10}$ kann 2 (deren Bin"ardarstellung ist (10) entscheiden. D.h. $M_{10}$ akzeptiert 10. Ansonsten verwirft $M_{10}$.\\
+	$f_{M_{10}} \in S \Longrightarrow S \ne \emptyset$
+	
+	\item
+	$S \ne R$\\
+	Es existiert so eine TM $M_{\neg (10)}$ mit:\\
+	$M_{\neg (10)}$ kann auch 2 (deren Bin"ardarstellung ist 10) entscheiden. Aber im Fall verwirft $M_{\neg (10)}$ 10. Ansonsten akzeptiert $M_{\neg (10)}$ immer.\\
+	$f_{M_{\neg (10)}} \in R\backslash S \Longrightarrow S \ne R$\\
+	
+	Nach \textit{Satz von Rice} ist $L_{\mathbb{P}}$ unentscheidbar.
+		
+\end{itemize}
+
+\subsection*{b)}
+	Wir definieren $L_{comp} = \{ \langle M_1 \rangle\ \langle M_2 \rangle \ |\ L(M_1) = \overline{L(M_2)}\}$
+	\\ \ \\
+	Zu Zeigen: $H_\epsilon \leq L_{comp}$\\
+	Beschreibung der Funktion f:\\
+	Sei w die Eingabe f"ur $H_\epsilon$.
+	\begin{itemize}
+		\item Wenn $w$ keine G"odelnummer ist, so sei $f(w) = w$.
+		\item Falls $w = \langle M \rangle$ f"ur ein TM $M$, so sei $f(w)$ die G"odelnummer von TM $M^*_1$ und $M^*_2$, die die folgenden Eigenschaft haben:
+		 \begin{itemize}
+		 	\item[$M^*_1$] l"osche die Eingabe und simuliert M auf $\epsilon$. Falls M in den Endzustand l"auft(M h"alt), \textbf{schreibt $M^*_1$ ein 1 auf dem Band}.
+		 	\item[$M^*_2$] l"osche die Eingabe und simuliert M auf $\epsilon$. Falls M in den Endzustand l"auft(M h"alt), dann \textbf{geht $M^*_2$ in eine Endlosschleife}.
+		 \end{itemize}
+
+	\end{itemize}
+
+	Korrektheit:\\
+	\begin{align*}
+		w\in H_\epsilon &\longrightarrow M\ h"alt\ auf\ \epsilon \\
+		&\longrightarrow M^*_1\ akzeptiert\ die\ Einegabe.\ M^*_2\ akzeptiert\ dieselbe\ Eingabe\ nicht.\\
+		&\longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \in L_{comp}\\
+		&\longrightarrow f(w) \in L_{comp}\\		
+		w\notin H_\epsilon &\longrightarrow M\ h"alt\ nicht\ auf\ \epsilon \\
+		&\longrightarrow  M^*_1\ akzeptiert\ alle\ Einegabe nicht.\ M^*_2\ akzeptiert\ alle\ Eingabe\ nicht.\\
+		&\longrightarrow \langle M^*_1 \rangle\ \langle M^*_2 \rangle \notin L_{comp}\\
+		&\longrightarrow f(w) \notin L_{comp}\\		
+	\end{align*}
+
+	Daher wird $H_\epsilon \leq L_{comp}$ zeigt. Da $H_\epsilon$ nicht rekursiv ist, ist $L_{comp}$ nicht rekursiv.
+	
+	
+\section*{Aufgabe 7}
+\subsection*{a)}
+	Zu zeigen:\\
+	$L$ ist rekursiv aufz{\"a}hlbar $\iff$ $L=$ Def($f$)=\{$x$ $|$ $f(x) \ne \bot$ \} \\
+	``$\Rightarrow$":  Sei A ein Aufz{\"a}hler f{\"u}r $L$. Wir konstruieren eine TM $M$, die $L$ erkennt.\\
+	\indent \indent \  \textcolor{blue} {Bei Eingabe $w$ arbeitet $M$ wir folgt:}\\
+	\indent \indent \  $M$ simuliert $A$ mit Hilfe einer Spur, welche die Rolle des Druckers {\"u}bernimmt.\\
+	\indent \indent \  Immer wenn ein neues Wort gedruckt worden ist, vergleicht $M$ dieses Wort mit $w$ \\
+	\indent \indent \  und h{\"a}lt bei {\"U}bereinstimmung auf.\\
+	\indent \indent \  Daher berechnet TM $M$ die Funktion $f_M$ mit der Form: $\forall$ $x$ $\in$ $L$, $f_M(x) \ne \bot$\\	
+	``$\Leftarrow$": Sei $L=$ Def($f$)=\{ $x$ $|$ $f(x) \ne \bot$ \}, dann konstruieren wir einen Aufz"ahler $A^{'}$ f"ur $L$.\\
+	 
+\end{document}
+
