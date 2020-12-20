@@ -1,0 +1,187 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+
+
+
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+
+\usepackage{color}
+\usepackage{pifont}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+% 请把新添加的宏包放置此处
+\usepackage{blindtext} 
+\usepackage{enumitem}
+%\usepackage {ctex} % 中文字体支持
+\usepackage[most]{tcolorbox} 
+% https://tex.stackexchange.com/questions/180325/boxed-equation-with-number/180326
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/mathtools/empheq.pdf#page=23
+
+\tcbset{colback=rwth-blue!10!white, colframe=-rwth-red!50!black, 
+	highlight math style= {enhanced, %<-- needed for the ’remember’ options
+		colframe=red,colback=red!10!white,boxsep=0pt}
+} 
+%   for tcolorbox
+% 	Example
+%	\begin{tcolorbox}[ams gather*]
+%		\sum\limits_{n=1}^{\infty} \frac{1}{n} = \infty.\\
+%		\int x^2 ~\text{d}x = \frac13 x^3 + c.
+%	\end{tcolorbox}
+
+% Codeblock and Code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	%	backgroundcolor=\color{backcolour},   
+	backgroundcolor=\color{white},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+% https://upload.wikimedia.org/wikipedia/commons/2/2d/LaTeX.pdf#page=131
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
+\chead{\Large Übungsblatt 06}
+\ohead{Jiaming Yao, 416649 \\
+	   Xiaoting Wang, 406267 \\
+	   Wensheng Zhang, 405521}	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+
+\section*{Aufgabe 6}
+
+\subsection*{b)}
+	Zu zeigen: $K\in PKP \iff f(K) \in PKP_b$
+	\\ \ \\
+	Sei \textit{K} die die Eingabe f"ur PKP. $K =\Big\{ \left[ \frac{x_1}{y_1}  \right] ,\cdots , \left[ \frac{x_k}{y_k}  \right] \Big\} $
+	\begin{itemize}
+		\item [Fall 1] Wenn es in \textit{K} keine Dominos gibt, wo das obere und das untere Wort gleich lang sind, so sei $f(K)=K$.
+		\item [Fall 2] Ansonsten machen wir f"ur die Dominos (oben und unten gleich lang) folgendes:\\ \ \\
+		Wir bezeichnen solche Dominos als $K'=\big\{  \left[ \frac{x_{l_{1}}}{y_{l_{1}}} \right], \cdots ,\left[ \frac{x_{l_{n}}}{y_{l_{n}}} \right] \big\}$. (die Reihenfolge spielt keine Rolle)\\
+		Dann kombinieren wir Dominos aus $K'$ \textcolor{rwth-blue}{(oben und unten gleich lang)} mit einem anderen Domino aus $K/K'$ \textcolor{rwth-blue}{ (oben und unten verschieden lang)}:\\
+		Zum Beispiel k"onnen wir  $\left[ \frac{x_{l_{1}}}{y_{l_{1}}} \right]$ mit $\left[ \frac{x_i}{y_i}  \right]$ (einer aus $K/K'$) kombinieren. In dem Fall bekommen wir zwei neue Dominos $\left[ \frac{x_{l_{1}} x_i}{y_{l_{1}} y_i} \right]$ und $\left[ \frac{x_i x_{l_{1}}}{y_i y_{l_{1}}} \right]$ \textcolor{rwth-blue}{ (einmal vorn, einmal hinter) }.
+		\\ \ \\
+		Insgesamt k"onnen wir $2 \times n \times (k-n)$ mal neue Dominos konstruieren. Man kann klar sehen, in solchen Dominos stehen immer verschieden lang W"orter oben und unten. Wir bezeichnen solche konstruierte Dominos als $K''$. So sei $f(K) = \{ K/K', K''\} $.
+	\end{itemize}  
+	
+	
+	\noindent Korrektheit:\\
+	
+	\noindent \textcolor{rwth-blue}{$K \in PKP \Longrightarrow f(K) \in PKP_b$}\\
+	Sei $(i_1,\cdots ,i_n)$ eine L"osung f"ur $K$, d.h.
+	\begin{align*}
+		x_{i_1} x_{i_2} \cdots x_{i_n} = y_{i_1} y_{i_2} \cdots y_{i_n}
+	\end{align*}
+	F"ur Fall 1 ist es klar, $f(K) \in PKP_b$.\\
+	Im Fall 2 gibt es immer eine L"osung f"ur $f(K)$, dessen entsprechende W"orter gleich wie oben ist.\\
+	Z.B. die L"ange von $x_{i_j}$ ist gleich wie $y_{i_j}$ f"ur ein $j \in \{1,\cdots, n\}$. So ein Domino steht nicht in $f(K)$. Aber k"onnen wir dieser durch $\left[ \frac{x_{i_{j-1}} x_{i_j}}{y_{i_{j-1}} y_{i_j}} \right]$ und $\left[ \frac{x_{i_{j}} x_{i_{j+1}}}{y_{i_{j}} y_{i_{j+1}}} \right]$ aus $f(K)$ ersetzen und l"oschen die entsprechende Domino:\\
+	$$
+	  \left[ \frac{x_{i_{1}}}{y_{i_{1}}} \right] \cdots  \left[ \frac{x_{i_{j}}}{y_{i_{j}}} \right]  \cdots \left[ \frac{x_{i_{n}}}{y_{i_{n}}} \right] \Longrightarrow \left[ \frac{x_{i_{1}}}{y_{i_{1}}} \right] \cdots  \left[ \frac{x_{i_{j}} x_{i_{j+1}}}{y_{i_{j}} y_{i_{j+1}}} \right] \left[ \frac{x_{i_{j+2}}}{y_{i_{j+2}}} \right] \cdots \left[ \frac{x_{i_{n}}}{y_{i_{n}}} \right]
+	$$
+	\textcolor{rwth-blue}{$K \notin PKP \Longrightarrow f(K) \notin PKP_b$}\\
+	Offensichtlich......\\
+	\\ \ \\
+	Wegen $K\in PKP \iff f(K) \in PKP_b$ und Unentscheidbarkeit von $PKP$ ist $PKP_b$ auch unentscheidbar.
+	
+	
+	
+	
+	 
+	
+	
+
+
+
+
+\end{document}
+
