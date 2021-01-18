@@ -1,0 +1,192 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
+
+%Paket für Header in Koma-Klassen (scrartcl, scrrprt, scrbook, scrlttr2)
+\usepackage[headsepline]{scrlayer-scrpage}
+% Header groß genug für 3 Zeilen machen
+\setlength{\headheight}{3\baselineskip}
+
+
+% Default Header löschen
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+% nicht kursiv gedruckte header
+\setkomafont{pagehead}{\sffamily\upshape}
+
+% Links im Dokuement sowie \url schön machen
+\usepackage[colorlinks,pdfpagelabels,pdfstartview = FitH, bookmarksopen = true,bookmarksnumbered = true, linkcolor = black, plainpages = false, hypertexnames = false, citecolor = black]{hyperref}
+
+% Umlaute in der Datei erlauben, auf deutsch umstellen
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Mathesymbole und Ähnliches
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+
+% Komplexitätsklassen
+\newcommand{\pc}{\ensuremath{{\sf P}}}
+\newcommand{\np}{\ensuremath{{\sf NP}}}
+\newcommand{\npc}{\ensuremath{{\sf NPC}}}
+\newcommand{\pspace}{\ensuremath{{\sf PSPACE}}}
+\newcommand{\exptime}{\ensuremath{{\sf EXPTIME}}}
+\newcommand{\CClassNP}{\textup{NP}\xspace}
+\newcommand{\CClassP}{\textup{P}\xspace}
+
+% Weitere pakete
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% Abbildungen
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+
+
+
+
+
+% Meistens ist \varphi schöner als \phi, genauso bei \theta
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+
+% Aufzählungen anpassen (alternativ: \arabic, \alph)
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+
+\usepackage{color}
+\usepackage{pifont}
+
+% rwth colors
+% colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+% 请把新添加的宏包放置此处
+\usepackage{blindtext} 
+\usepackage{enumitem}
+%\usepackage {ctex} % 中文字体支持
+\usepackage[most]{tcolorbox} 
+% https://tex.stackexchange.com/questions/180325/boxed-equation-with-number/180326
+% http://mirrors.dotsrc.org/ctan/macros/latex/contrib/mathtools/empheq.pdf#page=23
+
+\tcbset{colback=rwth-blue!10!white, colframe=-rwth-red!50!black, 
+	highlight math style= {enhanced, %<-- needed for the ’remember’ options
+		colframe=red,colback=red!10!white,boxsep=0pt}
+} 
+%   for tcolorbox
+% 	Example
+%	\begin{tcolorbox}[ams gather*]
+%		\sum\limits_{n=1}^{\infty} \frac{1}{n} = \infty.\\
+%		\int x^2 ~\text{d}x = \frac13 x^3 + c.
+%	\end{tcolorbox}
+
+% Codeblock and Code
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	%	backgroundcolor=\color{backcolour},   
+	backgroundcolor=\color{white},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+% https://upload.wikimedia.org/wikipedia/commons/2/2d/LaTeX.pdf#page=131
+
+% Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
+\ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
+\chead{\Large Weihnachtblatt}
+\ohead{Jiaming Yao, 416649 \\
+	   Xiaoting Wang, 406267 \\
+	   Wensheng Zhang, 405521}	
+\cfoot*{\pagemark} % Seitenzahlen unten
+
+\begin{document}
+	
+\section*{Aufgabe 1}
+
+L enth"alt genau ein Wort s. s ist entweder 0 oder 1. \\
+Dass L entscheidbar ist, bedeutet, es gibt eine TM, die auf jeder Eingabe h"alt und jedes Word aus L($\Sigma ^* \backslash $ L) akzeptiert(verwirft).\\
+Aber wir wissen nicht, welches Wort genau in der Sprache steht(0 oder 1?). Wir k"onnen nicht so eine TM entwerfen, die eine unbekannte Sprache entscheiden kann. Deshalb ist L unentscheidbar.
+
+\section*{Aufgabe 2}
+
+F"ur die unendliche Rezepte $w_i$ und $M_i$ definieren wir eine zweidimensionale unendliche Matrix ($A_{m,n}$)$_{m\in \mathbb{N},n\in \mathbb{N}}$ mit
+$$ A_{m,n}=\left\{
+\begin{aligned}
+1 &\ falls\ M_m\ w_n\ akzeptiert,\\
+0 &\ sonst
+\end{aligned}
+\right.
+$$
+Beispiel:
+\begin{table}[h]
+	\begin{tabular}{l|lllll}
+		& $w_0$ & $w_1$   & $w_2$   & $w_3$   & $\cdots$ \\ \hline
+		$M_0$   & 0       & 1       & 0       & 1       & $\cdots$ \\
+		$M_1$   & 1       & 0       & 1       & 0       & $\cdots$ \\
+		$M_2$   & 0       & 0       & 1       & 1       & $\cdots$ \\
+		$M_3$   & 1       & 0       & 1       & 1       & $\cdots$ \\
+		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ 
+	\end{tabular}
+\end{table}
+
+Die Matrix $A_{m,n}$ passt unsere Aufgabe: z.B. $M_0$ akzeptiert $w_1$ und $w_3$, verwirft $w_0$ und $w_2$. D.h. der 0-te Wichtel mag die Leckereien, die zu den 1-ten und 3-ten Rezepten geh"oren. \\
+Sei $D = \{ w_m\ |\ A_{m,m} = 0\}$,\\
+Also k"onnen wir $D$ als Diagonalsprache betrachten. Aus Vorlesung sind $D$ und $\overline{D}$ nicht rekursiv.\\
+Somit ist das in der Aufgabe genannte Problem unentschiedbar.
+
+\section*{Aufgabe 3}
+
+\subsection*{a)}
+
+Wir k"onnen eine TM $M_a$ konstruieren, die $L_1$ entscheidet:\\
+\begin{itemize}
+	\item Zuerst "uberpr"uft $M_a$, ob die Eingabe syntaktisch (als G"odelnummer) korrekt ist.
+	\item Dann z"ahle, wie viele Zust"ande in der Eingabe bzw. G"odelnummer auftreten. Z.B. \\
+	111 \textcolor{red}{$\underline{0}$101010001000} 11 \textcolor{red}{$\underline{0}$100100010001000} 11 \textcolor{red}{$\underline{0}$10001001000100} 11\\
+	\textcolor{red}{$\underline{000}$10101001000} 11 \textcolor{red}{$\underline{000}$100100101000} 11 \textcolor{red}{$\underline{000}$100010100010} 111 \\ 
+	$M_a$ kann z"ahlen, wie viele 0s es unmittelbar nach jedes 11 gibt (wie Unterstreichen zeigt). Dann kann $M_a$ die Information auf zweitem Band speichern.
+	\item Wenn das Z"ahlen fertig ist, pr"uft, ob $M_a$ die Anzahl von die Zust"anden mehr als 24 ist. Wenn ja, akzeptiert die Eingabe, sonst verwirft.
+\end{itemize}
+Wenn das Endstand nicht gez"ahlt ist, kann die Anzahl von die Zust"ande automatisch eins addieren. 
+
+
+
+\end{document}
+
