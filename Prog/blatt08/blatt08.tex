@@ -26,7 +26,10 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{microtype}
-
+\newcommand{\NN}{{\mathbb N}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\QQ}{{\mathbb Q}}
+\newcommand{\ZZ}{{\mathbb{Z}}}
 
 % Komplexitätsklassen
 \newcommand{\pc}{\ensuremath{{\sf P}}}
@@ -56,10 +59,6 @@
 % Aufzählungen anpassen (alternativ: \arabic, \alph)
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
-
-\usepackage{color}
-\usepackage{pifont}
-
 % rwth colors
 % colors: blue violet purple carmine red magenta orange yellow grass cyan gold silver
 \definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
@@ -78,7 +77,7 @@
 \definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
 
 % 请把新添加的宏包放置此处
-\usepackage{blindtext} 
+%\usepackage{blindtext} 
 \usepackage{enumitem}
 %\usepackage {ctex} % 中文字体支持
 \usepackage[most]{tcolorbox} 
@@ -106,7 +105,7 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-	%	backgroundcolor=\color{backcolour},   
+%	backgroundcolor=\color{backcolour},   
 	backgroundcolor=\color{white},   
 	commentstyle=\color{codegreen},
 	keywordstyle=\color{magenta},
@@ -126,67 +125,77 @@
 }
 
 \lstset{style=mystyle}
-% https://upload.wikimedia.org/wikipedia/commons/2/2d/LaTeX.pdf#page=131
+
+\usepackage{float}
+
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
-\ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
-\chead{\Large Weihnachtblatt}
-\ohead{Jiaming Yao, 416649 \\
-	   Xiaoting Wang, 406267 \\
+\ihead{Programmierung WS 2020/21 \\ Tutorium 06 \\\today}
+\chead{\Large Übungsblatt 06}
+\ohead{Xiaoting Wang, 406267 \\
 	   Wensheng Zhang, 405521}	
 \cfoot*{\pagemark} % Seitenzahlen unten
 
 \begin{document}
-	
-\section*{Aufgabe 1}
 
-L enth"alt genau ein Wort s. s ist entweder 0 oder 1. \\
-Dass L entscheidbar ist, bedeutet, es gibt eine TM, die auf jeder Eingabe h"alt und jedes Word aus L($\Sigma ^* \backslash $ L) akzeptiert(verwirft).\\
-Aber wir wissen nicht, welches Wort genau in der Sprache steht(0 oder 1?). Wir k"onnen nicht so eine TM entwerfen, die eine unbekannte Sprache entscheiden kann. Deshalb ist L unentscheidbar.
+\section*{Aufgabe 5}
 
-\section*{Aufgabe 2}
-
-F"ur die unendliche Rezepte $w_i$ und $M_i$ definieren wir eine zweidimensionale unendliche Matrix ($A_{m,n}$)$_{m\in \mathbb{N},n\in \mathbb{N}}$ mit
-$$ A_{m,n}=\left\{
-\begin{aligned}
-1 &\ falls\ M_m\ w_n\ akzeptiert,\\
-0 &\ sonst
-\end{aligned}
-\right.
-$$
-Beispiel:
-\begin{table}[h]
-	\begin{tabular}{l|lllll}
-		& $w_0$ & $w_1$   & $w_2$   & $w_3$   & $\cdots$ \\ \hline
-		$M_0$   & 0       & 1       & 0       & 1       & $\cdots$ \\
-		$M_1$   & 1       & 0       & 1       & 0       & $\cdots$ \\
-		$M_2$   & 0       & 0       & 1       & 1       & $\cdots$ \\
-		$M_3$   & 1       & 0       & 1       & 1       & $\cdots$ \\
-		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ 
-	\end{tabular}
-\end{table}
-
-Die Matrix $A_{m,n}$ passt unsere Aufgabe: z.B. $M_0$ akzeptiert $w_1$ und $w_3$, verwirft $w_0$ und $w_2$. D.h. der 0-te Wichtel mag die Leckereien, die zu den 1-ten und 3-ten Rezepten geh"oren. \\
-Sei $D = \{ w_m\ |\ A_{m,m} = 0\}$,\\
-Also k"onnen wir $D$ als Diagonalsprache betrachten. Aus Vorlesung sind $D$ und $\overline{D}$ nicht rekursiv.\\
-Somit ist das in der Aufgabe genannte Problem unentschiedbar.
-
-\section*{Aufgabe 3}
-
-\subsection*{a)}
-
-Wir k"onnen eine TM $M_a$ konstruieren, die $L_1$ entscheidet:\\
-\begin{itemize}
-	\item Zuerst "uberpr"uft $M_a$, ob die Eingabe syntaktisch (als G"odelnummer) korrekt ist.
-	\item Dann z"ahle, wie viele Zust"ande in der Eingabe bzw. G"odelnummer auftreten. Z.B. \\
-	111 \textcolor{red}{$\underline{0}$101010001000} 11 \textcolor{red}{$\underline{0}$100100010001000} 11 \textcolor{red}{$\underline{0}$10001001000100} 11\\
-	\textcolor{red}{$\underline{000}$10101001000} 11 \textcolor{red}{$\underline{000}$100100101000} 11 \textcolor{red}{$\underline{000}$100010100010} 111 \\ 
-	$M_a$ kann z"ahlen, wie viele 0s es unmittelbar nach jedes 11 gibt (wie Unterstreichen zeigt). Dann kann $M_a$ die Information auf zweitem Band speichern.
-	\item Wenn das Z"ahlen fertig ist, pr"uft, ob $M_a$ die Anzahl von die Zust"anden mehr als 24 ist. Wenn ja, akzeptiert die Eingabe, sonst verwirft.
-\end{itemize}
-Wenn das Endstand nicht gez"ahlt ist, kann die Anzahl von die Zust"ande automatisch eins addieren. 
+	\begin{figure}[H]
+		\includegraphics[width=1.25\textwidth]{Blatt08-Uebung.png}
+		\centering
+	\end{figure}
+\\ \ \\
+\section*{Aufgabe 8}
 
 
+
+
+
+\begin{lstlisting}[mathescape=true, language=haskell]
+-- a)
+isMatrix :: [[Int]] -> Bool
+isMatrix [] = True
+isMatrix [x] = True
+isMatrix (x:y:xs) | length x == length y = isMatrix (x:xs)
+                  | otherwise            = False
+
+-- b)
+dimensions :: [[Int]] -> (Int, Int)
+dimensions (x:xs) | not (isMatrix (x:xs)) = (-1, -1)
+                  | otherwise             = (zeilen, spalten)
+		where zeilen  = length (x:xs)
+			  spalten = length x
+
+-- c)
+isQuadratic :: [[Int]] -> Bool
+isQuadratic (x:xs) | (length (x:xs))==(length x) = True
+				   | otherwise                   = False 
+
+-- d)
+getRow :: [[Int]] -> Int -> [Int]
+getRow xs i | isMatrix xs = xs !! i
+            | otherwise   = []
+
+getCol :: [[Int]] -> Int -> [Int]
+getCol [] _   = []
+getCol (x:xs) i | not (isMatrix (x:xs)) = []
+				| otherwise             = (x !! i) : (getCol xs i)
+
+-- e)
+trac :: [[Int]] -> [[Int]]
+trac (x:xs) = help (x:xs) ((length x)-1)
+		where help :: [[Int]] -> Int -> [[Int]] 
+			  help ys (-1) = []
+			  help ys  n   = (help ys (n-1)) ++ [(getCol ys n)] 
+
+-- f)
+setEntry :: [[Int]] -> Int -> Int -> Int -> [[Int]]
+setEntry (x:xs) 0 j aij = (help x j aij) : xs
+		where help :: [Int] -> Int -> Int -> [Int]
+		      help (y:ys) n aij  | n==0      = aij:ys
+								 | otherwise = y:(help ys (n-1) aij)
+setEntry (x:xs) i j aij = x : (setEntry xs (i-1) j aij)
+\end{lstlisting}
 
 \end{document}
 
