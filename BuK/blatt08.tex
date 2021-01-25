@@ -1,3 +1,4 @@
+% !TeX spellcheck = <none>
 \documentclass[a4paper,11pt]{scrartcl}
 \usepackage[a4paper, left=2cm, right=4.5cm, top=2cm, bottom=2cm]{geometry} % kleinere Ränder
 
@@ -130,7 +131,7 @@
 
 % Header i-> inner (bei einseitig links), c -> center, o -> Outer (bei einseitg rechts)
 \ihead{BuK WS 2020/21 \\ Tutorium 08 \\\today}
-\chead{\Large Übungsblatt 07}
+\chead{\Large Übungsblatt 08}
 \ohead{Jiaming Yao, 416649 \\
 	   Xiaoting Wang, 406267 \\
 	   Wensheng Zhang, 405521}	
@@ -141,11 +142,11 @@
 \section*{Aufgabe 4}
 \subsection*{a)}
 \begin{itemize}
-	\item[Zertifikat:] Sei $V'={v_1,v_2,\cdots ,v_k}$. Dann konstruieren wir das Zertifikat im Form $c=bin(v_1)\# bin(v_2)\# \cdots \# bin(v_{k-1})\# bin(v_k)\#$. Die L"ange des Zertifikat ist $O(n \log n)$ mit $n=|V|$, also poylnomiell in der Eingabel"ange.
+	\item[Zertifikat:] Sei $V'=\{v_1,v_2,\cdots ,v_k\}$. Dann konstruieren wir das Zertifikat im Form $c=bin(v_1)\# bin(v_2)\# \cdots \# bin(v_{k-1})\# bin(v_k)\#$. Die L"ange des Zertifikat ist $O(n \log n)$ mit $n=|V|$, also poylnomiell in der Eingabel"ange.
 	\item [Verifizierer:] 1. Pr"ufe zun"achst, ob die Eingabe die richtige Form hat.\\
 	2. Pr"ufe dann, ob es f"ur alle Paare von Knoten $(v,w)\in V'\times V'$ keine Kante $e=(v,w)\in E$ existiert:\\
 	- wir konstruieren eine Menge \textcolor{blue}{$M'$ von allen Paaren von Knoten $(v,w)\in V' \times V':\ M'=\{\{v_1,v_2\},\{v_1,v_3\},\cdots,\{v_{k-1},v_{k}\}\}$}. Schreibe $M'$ auf Arbeitsband.\\ (Manche kann benachbart sein, manche nicht. Unsere Ziel ist, solche benachbarte Knoten zu finden)\\
-	- Iteriere aller paar von $M'$ und suche, ob es einen Kanten in dieser Paare gibt ( $(v,w)\in E$ ). Wenn ja, verwirft das Algorithmus. Wenn die Iterarion fertig ist, akzeptiert das Algorithmus.
+	- Iteriere aller paar von $M'$ und suche, ob es einen Kanten in dieser Paare gibt ( $(v,w)\in E$ ). Wenn ja, verwirft der Algorithmus. Wenn die Iterarion fertig ist, akzeptiert der Algorithmus.
 	\item [Laufzeit:]
 	\begin{itemize}
 		\item Fomatcheck: linear
@@ -157,11 +158,10 @@
 	\end{itemize}
 
 
-	\item[Korrektheit:] Wenn Verifizierer akzeptiert, dann l"asst isch aus dem Zertifikat $V'$ konsturieren und die Instanz ist k-Independent-Set.\\
+	\item[Korrektheit:] Wenn Verifizierer akzeptiert, dann l"asst sich aus dem Zertifikat $V'$ konsturieren und die Instanz ist k-Independent-Set.\\
 	Wenn die Instanz k-Independent-Set ist, l"asst sich daraus ein g"ultiges Zertifikat konstruieren und der Verifizierer akzeptiert.
-	
- 
 \end{itemize}
+
 \subsection*{b)}
 \begin{lstlisting} [language=java]
 1. K:={1,...,N}   // N=|V|
@@ -175,7 +175,7 @@
 Die Laufzeit des Algorithmus ist in der Polynomialzeit beschr"ankt, weil FOR nut N-mal ausgef"uht wird.
 \\ \ \\
 Korrektheit:\\
-$G(=V,E)\in L$ $\Longrightarrow$ Der Algorithmus kann eine zul"assige L"osung $K\in V$ ausgeben.\\
+$G(=(V,E)\ )\in L$ $\Longrightarrow$ Der Algorithmus kann eine zul"assige L"osung $K\in V$ ausgeben.\\
 $\Longrightarrow$ $G$ ist k-Independent Set, $K\in V$\\
 $\Longrightarrow$ $\forall (v,w)\in K\ :\ (v,w)\notin E$
 \\ \ \\
@@ -201,14 +201,14 @@ Warum ist ausgegebenes $K$ eine zul"assige L"osung?
 \subsection*{b)}
 \begin{itemize}
 	\item Wir lösen das Problem mit einer Tiefensuche.
-	\item In den Tiefensuche-Prozess färben wir alle Konten, indem jeder Knoten und seine Kinder verschiedene Farbe haben.
+	\item In den Tiefensuche-Prozess färben wir alle Konten, indem jeder Knoten und seine Kinder verschiedene F"arben haben.
 	\item Nachdem Tiefensuche-Prozess, suchen wir die Kanten, die nicht in der Tiefensuche sind. Vergleichen wir dann, ob jede Kante zwei verschiedenen gefärbten Knoten hat.\\
 	Falls \textcolor{blue}{ja} $\Rightarrow$ Der Graph gilt 2-COLORABILITY.
 	\item Die Laufzeit  von diesem Algorithmus ist \textcolor{blue}{polynomiell beschränkt} (nach der Vorlesung).
 \end{itemize}
 
 \subsection*{c)}
-\noindent Nach der Vorlesung ist schon erkennt, dass COLORING $\leq_p$ SAT gilt. Deswegen hat COLORING einen Polynomialzeitalgorithmus.\\
+\noindent Nach der Vorlesung ist schon erkennt, dass COLORING $\leq_p$ SAT gilt.\\
 Bei diesem Fall ist 3-COLORABILITY ein spezieller Fall von COLORING, so dass 3-COLORABILITY $\leq_p$ SAT. Weil SAT eine NP-Problem ist, ist 3-COLORABILITY auch ein NP-Problem.
 
 
