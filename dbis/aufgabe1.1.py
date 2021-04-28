@@ -5,7 +5,7 @@ g.neuer_knoten("Benutzer")
 g.neues_attribut("Benutzer", "Name")
 g.neues_attribut("Benutzer", "EMail", primaer=True)
 g.neues_attribut("Benutzer", "Nickname")
-g.neues_attribut("Benutzer", "Laender")
+g.neues_attribut("Benutzer", "Land", mehrfach=True)
 
 g.neuer_knoten("Rezension")
 g.neues_attribut("Rezension", "Nummer", primaer=True)
